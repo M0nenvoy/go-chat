@@ -1,0 +1,106 @@
+/*
+ * Font faces
+ */
+@font-face {
+    font-family: 'Mulish';
+    src: url('Assets/fonts/Mulish.ttf');
+}
+
+html {
+    scroll-behaviour: smooth;
+}
+
+body {
+    font-family: 'Mulish';
+    font-size: 26px;
+    margin: 0px;
+    padding: 0px;
+    background-color: #bde0fe;
+    /* background-image: url('Assets/img/bg.jpg'); */
+}
+
+p {
+    margin: 0px;
+}
+
+.container {
+    margin: 5px;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.button {
+    font-weight: 700;
+    color: white;
+    height: 40px;
+    width: 30%;
+    margin: auto 0px;
+    background-color: #ffafcc;
+    border: none;
+}
+
+.textarea {
+    font-size: 24px;
+    margin: 0px 10px;
+    padding: 10px;
+    font-family: Mulish;
+    min-height: 4rem;
+    max-height: 6rem;
+    flex: 0;
+}
+
+.chat-container {
+    overflow: auto;
+    padding-bottom: 15px;
+    flex: 1;
+    display: flex;
+    flex-direction: column-reverse;
+
+}
+
+.message-container {
+    display: flex;
+    margin: 0px 15px;
+    margin-top: 15px;
+    position: relative;
+    color: #03045e;
+}
+
+.message-content {
+    margin-left: auto;
+    box-shadow: 4px 4px lightblue;
+    border-radius: 8px;
+    display: inline-block;
+    max-width: 70%;
+    background-color: #ffc8dd;
+    padding: 22px 24px;
+}
+
+.message-date {
+    /* color: #bde0fe; */
+    position: absolute;
+    bottom: 2px;
+    right: 14px;
+    font-size: 18px;
+}
+
+/* Message is from the server */
+.server > .message-content {
+    margin-left: initial;
+}
+.server > .message-date {
+    right: initial;
+    left: 14px;
+}
+
+/*
+ * Message animation
+ */
+.appearing {
+}
+
+.message-container:not(.appearing) {
+    transition: all 0.1s;
+    transition-timing-function: ease-out;
+}

@@ -1,0 +1,16 @@
+.welcome-container {
+    margin-left: 20px;
+    width: 30%;
+    min-width: 400px;
+    margin: 0px auto;
+    text-align: center;
+}
+
+.login-input {
+    text-align: center;
+    font-size: 24px;
+    font-family: Mulish;
+    width: 90%;
+    height: 2rem;
+    padding: 5px 15px;
+}

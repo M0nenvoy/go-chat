@@ -1,7 +1,7 @@
 package socket
 
 import (
-	"gorilla/history"
+	"go-chat/history"
 	"net/http"
 
 	"github.com/gorilla/websocket"

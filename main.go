@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"gorilla/handle"
-	"gorilla/handle/socket"
-	"gorilla/history"
+	"go-chat/handle"
+	"go-chat/handle/socket"
+	"go-chat/history"
 	"log"
 	"net/http"
 	"os"
@@ -29,6 +29,7 @@ func main() {
 
     http.Handle("/socket", socket.New())
     http.HandleFunc("/", handle.Root)
+    http.HandleFunc("/login", handle.Login)
     http.HandleFunc("/load", handle.Load)
     log.Fatal(http.ListenAndServe(":8000", nil))
 

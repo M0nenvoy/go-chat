@@ -64,7 +64,10 @@ export function fromJSON(json: any) : Message {
 
 // How date is formatted in the message
 function dateFmt(date: Date) : string {
-    return `${date.getHours()}:${date.getMinutes()}`
+    // Leading zero for the time string        V
+    let hours   = (date.getHours() < 10)    ? '0' + date.getHours()     : date.getHours()
+    let minutes = (date.getMinutes() < 10)  ? '0' + date.getMinutes()   : date.getMinutes()
+    return `${hours}:${minutes}`
 }
 
 /*

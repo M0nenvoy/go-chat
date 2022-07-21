@@ -1,0 +1,7 @@
+.git
+.cache
+web/node_modules
+web/dist/*
+resource/history.json
+!web/dist/.keep
+*.md

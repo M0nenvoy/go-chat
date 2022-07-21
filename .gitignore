@@ -1,6 +1,7 @@
 web/node_modules/
 web/dist/*
-web/package-lock.json
 !web/dist/.keep
+
+go.sum
 
 resource/history.json

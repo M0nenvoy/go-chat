@@ -2,7 +2,8 @@ package handle
 
 import (
 	"fmt"
-	"gorilla/history"
+	"go-chat/history"
+	"log"
 	"net/http"
 	"strings"
 )
@@ -34,13 +35,14 @@ func Root(w http.ResponseWriter, r *http.Request) {
     // Wants root
     if len(stripped) == 0 {
         // Check if user is logged in
-        _, err := r.Cookie("username")
+        c, err := r.Cookie("username")
         if err != nil { // Not logged in
             // Redirect to login page
-            http.ServeFile(w, r, "web/dist/login.html")
+            http.Redirect(w, r, "/login", http.StatusFound)
             return
         }
         // Is logged in. Show the chat
+        log.Println("User " + c.Value + " has joined the chat")
         http.ServeFile(w, r, "web/dist/index.html")
         return
     }
@@ -57,4 +59,8 @@ func Root(w http.ResponseWriter, r *http.Request) {
 
     // But if it's not html, then the client is good to go.
     http.ServeFile(w, r, "web/dist/" + stripped)
+}
+
+func Login(w http.ResponseWriter, r *http.Request) {
+    http.ServeFile(w, r, "web/dist/login.html")
 }

@@ -1,15 +1,29 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-    mode: "development",
     entry: {
-        chat:   './src/chat.js',
-        login:  './src/login.js',
+        chat:    './src/chat.js',
+        login:   './src/login.js'
     },
+    plugins: [
+        // Generate html pages
+        new HtmlWebpackPlugin({
+            // Use chat.html as a template
+            template: 'src/chat.html',
+            chunks: ['chat']
+        }),
+        new HtmlWebpackPlugin({
+            // Use login.html as a template
+            template: 'src/login.html',
+            filename: 'login.html',
+            chunks: ['login'],
+        }),
+    ],
     output: {
         filename: 'bundle_[name].js',
         path: path.resolve(__dirname, 'dist'),
+        clean: true,
     },
     module: {
         rules: [
@@ -48,30 +62,10 @@ module.exports = {
             },
         ],
     },
-    plugins: [
-        // Generate html pages
-        new HtmlWebpackPlugin({
-            // Use chat.html as a template
-            template: 'src/chat.html',
-            chunks: ['chat']
-        }),
-        new HtmlWebpackPlugin({
-            // Use login.html as a template
-            template: 'src/login.html',
-            filename: 'login.html',
-            chunks: ['login'],
-        }),
-    ],
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
         alias: {
             Assets: path.resolve(__dirname, 'assets/')
         },
-    },
-    devServer: {
-        static: {
-            directory: path.join(__dirname, './'),
-            watch: true
-        }
     },
 }

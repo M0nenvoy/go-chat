@@ -1,12 +1,20 @@
-FROM avcosystems/golang-node
+FROM golang:alpine as go
 
-WORKDIR /app
-COPY . .
+WORKDIR /go-app
+COPY go .
 RUN go build
 
-RUN make
+FROM node as node
+WORKDIR /node-app
+RUN mkdir web
+COPY web web/
+COPY Makefile .
+RUN make frontend_prod
+
+FROM alpine as main
+RUN mkdir -p web/dist
+COPY --from=go /go-app/go-chat .
+COPY --from=node /node-app/web/dist web/dist
 
 CMD ["./go-chat"]
-
-EXPOSE 8080
-
+EXPOSE 8000

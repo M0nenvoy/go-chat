@@ -2,6 +2,4 @@ web/node_modules/
 web/dist/*
 !web/dist/.keep
 
-go.sum
-
-resource/history.json
+go/resource/history.json

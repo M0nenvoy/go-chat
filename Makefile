@@ -13,11 +13,12 @@ yarn_build:
 	yarn --cwd $(WEBDIR) run build
 
 backend:
-	go build
+	go build -o go-chat
 
 .PHONY: prod
 prod: frontend_prod backend
 
+.PHONY: frontend_prod
 frontend_prod: yarn_install_prod yarn_build_prod
 
 yarn_install_prod:

@@ -43,7 +43,7 @@ func Root(w http.ResponseWriter, r *http.Request) {
         }
         // Is logged in. Show the chat
         log.Println("User " + c.Value + " has joined the chat")
-        http.ServeFile(w, r, "web/dist/index.html")
+        http.ServeFile(w, r, "../web/dist/index.html")
         return
     }
 
@@ -58,9 +58,9 @@ func Root(w http.ResponseWriter, r *http.Request) {
     }
 
     // But if it's not html, then the client is good to go.
-    http.ServeFile(w, r, "web/dist/" + stripped)
+    http.ServeFile(w, r, "../web/dist/" + stripped)
 }
 
 func Login(w http.ResponseWriter, r *http.Request) {
-    http.ServeFile(w, r, "web/dist/login.html")
+    http.ServeFile(w, r, "../web/dist/login.html")
 }

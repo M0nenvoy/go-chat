@@ -5,8 +5,5 @@ const common    = require('./webpack.common.js')
 module.exports = merge(common, {
     mode: 'development',
     devtool: 'inline-source-map',
-    devServer: {
-        directory: path.join(__dirname, './'),
-        watch: true,
-    },
+    devServer: { },
 })
